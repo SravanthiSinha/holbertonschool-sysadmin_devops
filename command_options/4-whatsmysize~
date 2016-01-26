@@ -1,0 +1,3 @@
+#/bin/bash
+du -ch /tmp
+du -ch
