@@ -1,3 +1,2 @@
 #/bin/bash
-du -h /tmp
-du -ch
+du -hcd 0 . /tmp
