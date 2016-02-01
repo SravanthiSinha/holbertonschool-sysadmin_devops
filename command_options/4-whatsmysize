@@ -1,2 +1,2 @@
 #/bin/bash
-du -hcd 0 . /tmp
+du -hcd 0 . /tmp/
