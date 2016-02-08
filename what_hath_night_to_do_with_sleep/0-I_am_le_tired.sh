@@ -1,2 +1,2 @@
 #!/bin/bash
-time sleep 9.8
+sleep 9.8
