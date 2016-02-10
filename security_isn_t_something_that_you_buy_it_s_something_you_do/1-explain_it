@@ -1,0 +1,3 @@
+Creating SSH keys:SSH keys provide a more secure way of logging into a virtual private server. Generating a key pair offers users two lengthy strings of characters corresponding to a public as well as a private key. we should use “ssh-keygen -t rsa” to create a RSA key Pair
+Public Key:The public key is placed on all computers that must allow access to the owner of the matching private key.
+Private Key:While authentication is based on the private key, the key itself is never transferred through the network during authentication. SSH only verifies whether the same person offering the public key also owns the matching private key.
