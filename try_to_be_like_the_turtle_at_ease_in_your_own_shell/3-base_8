@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "obase=8; ibase=10; $(($((8#$NUM1))+$((8#$NUM2))))" |bc
