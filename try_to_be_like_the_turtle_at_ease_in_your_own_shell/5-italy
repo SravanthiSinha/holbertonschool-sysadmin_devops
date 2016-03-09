@@ -1,7 +1,6 @@
 #!/bin/bash
-h=$(tput lines)
 printf -v s '%*s' $(($(tput cols)/3))
-while [ $h -gt 0 ];do    
-    echo -e -n "\033[42m${s// / }" &&  echo -e -n "\033[47m${s// / }" && echo -e  "\033[41m${s// / }\033[0m"	    
-    let --h
+p='\033'
+for j in $(seq 1 $(tput lines)); do
+  echo -e "$p[42m${s/ }$p[47m${s/ }$p[41m${s/ }$p[0m"
 done
