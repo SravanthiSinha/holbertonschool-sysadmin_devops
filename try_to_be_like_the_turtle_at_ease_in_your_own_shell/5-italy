@@ -1,1 +1,7 @@
-#!\bin\bash
+#!/bin/bash
+h=$(tput lines)
+printf -v s '%*s' $(($(tput cols)/3))
+while [ $h -gt 0 ];do    
+    echo -e -n "\033[42m${s// / }" &&  echo -e -n "\033[47m${s// / }" && echo -e  "\033[41m${s// / }\033[0m"	    
+    let --h
+done
