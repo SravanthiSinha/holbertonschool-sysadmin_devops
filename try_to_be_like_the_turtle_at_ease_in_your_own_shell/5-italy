@@ -1,6 +1,10 @@
 #!/bin/bash
-printf -v s '%*s' $(($(tput cols)/3))
-p='\033'
-for j in $(seq 1 $(tput lines)); do
-  echo -e "$p[42m${s/ }$p[47m${s/ }$p[41m${s/ }$p[0m"
+t='tput'
+l(){
+$t setab $1
+printf "%$((`$t cols`/3))s"
+}
+for j in $(seq 2 `$t lines`); do
+  l 2;  l 7;  l 1; $t sgr0; 
 done
+
