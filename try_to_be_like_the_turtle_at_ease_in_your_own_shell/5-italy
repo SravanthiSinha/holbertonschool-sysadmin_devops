@@ -4,7 +4,6 @@ l(){
 $t setab $1
 printf "%$((`$t cols`/3))s"
 }
-for j in $(seq 2 `$t lines`); do
-  l 2;  l 7;  l 1; $t sgr0; 
+for j in $(seq 1 `$t lines`);do
+l 2;l 7;l 1;$t sgr0;
 done
-
