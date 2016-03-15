@@ -1,5 +1,5 @@
 #!/bin/bash
-t='tput'
+t=tput
 l(){
 $t setab $1
 printf "%$((`$t cols`/3))s"
