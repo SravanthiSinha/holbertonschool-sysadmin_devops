@@ -1,0 +1,5 @@
+#!/bin/bash
+cat -n /etc/passwd | cut -d ':' -f 3,3 | wc -l
+
+
+

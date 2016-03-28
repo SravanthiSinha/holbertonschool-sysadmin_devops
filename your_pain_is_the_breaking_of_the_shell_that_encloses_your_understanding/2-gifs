@@ -1,0 +1,2 @@
+#!/bin/bash
+find ./ -name '*.gif'| xargs -n 1 basename | rev | cut -f 2- -d '.' | rev
