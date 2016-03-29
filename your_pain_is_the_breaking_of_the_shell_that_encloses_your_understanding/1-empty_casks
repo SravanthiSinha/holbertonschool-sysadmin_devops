@@ -1,2 +1,2 @@
 #!/bin/bash
-find ./ -empty| xargs -n 1 basename
+find . -empty| xargs -n 1 basename

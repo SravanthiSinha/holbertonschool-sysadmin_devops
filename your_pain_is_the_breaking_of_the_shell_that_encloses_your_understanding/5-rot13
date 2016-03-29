@@ -1,3 +1,2 @@
 #!/bin/bash
-cat $2 |  tr '[A-Za-z]' '[N-ZA-Mn-za-m]'
-echo ''
+tr '[A-Za-z]' '[N-ZA-Mn-za-m]'
