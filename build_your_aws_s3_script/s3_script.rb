@@ -6,8 +6,8 @@ require 'optparse'
 require 'ostruct'
 
 class AWSClient
-  @@s3client
-  @@s3resource
+
+  @@s3
   def intialize
     pass
   end
@@ -15,34 +15,29 @@ class AWSClient
   def connect(filename)
     # load credentials from disk
     creds= YAML.load(File.read(filename))
-    Aws.config.update(
-      region: creds['region'],
+    @@s3 = Aws::S3::Resource.new(
       access_key_id: creds['access_key_id'],
-      secret_access_key: creds['secret_access_key'])
-
-    @@s3client =Aws::S3::Client.new
-    @@s3resource =Aws::S3::Resource.new
-    
+      secret_access_key: creds['secret_access_key'],
+      region: creds['region']
+    )    
   end
   
   def list(bucketname)
-    @@s3client.list_objects(bucket: bucketname).contents.each do |object|
+    @@s3.bucket(bucketname).objects.each do |object|
       puts "#{object.key} => #{object.etag}"
     end
   end
   
   def upload(filepath,bucketname)
-    @@s3resource.bucket(bucketname).object(File.basename(filepath)).upload_file(filepath)
+    @@s3.bucket(bucketname).object(File.basename(filepath)).upload_file(filepath)
   end
   
   def delete(filepath,bucketname)
-    @@s3client.delete_object(key:filepath, bucket:bucketname)
+    @@s3.bucket(bucketname).object(File.basename(filepath)).delete
   end
 
   def download(filepath,bucketname)
-    File.open(filepath, 'wb') do |file|
-      reap = @@s3client.get_object({ bucket:bucketname, key:filepath }, target: file)
-    end
+    @@s3.bucket(bucketname).object(File.basename(filepath)).get(response_target: filepath)
   end
    
 end
@@ -67,7 +62,7 @@ class Optparse
 
       # Boolean switch.
       opts.on("-v", "--verbose", "Run verbosely") do |v|
-        options.verbose = v
+        options.verbose = true
       end
 
       opts.on("-b", "--bucketname=BUCKET_NAME", "Name of the bucket to perform the action on") do |v|
@@ -82,9 +77,7 @@ class Optparse
         options.action = v
       end
 
-      # No argument, shows at tail.  This will print an options summary.
-      # Try it and see!
-      opts.on_tail('-h','--help') do
+      if ARGV[1] == nil || ARGV[1] == '-h' || ARGV[1] == '--help'
         puts opts
         exit
       end
@@ -117,12 +110,8 @@ def handleAction(options)
   end
 end
 
-
-options = Optparse.new(ARGV)
-
-
-
 if ARGV.length()
+  options = Optparse.new(ARGV)
   handleAction(options.getparams())
 end
 
