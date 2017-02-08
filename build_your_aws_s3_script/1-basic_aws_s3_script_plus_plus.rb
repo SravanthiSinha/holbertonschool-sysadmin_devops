@@ -56,7 +56,7 @@ class AWSClient
   end
    
 end
-
+$help
 class Optparse
   
   @@params = OpenStruct.new
@@ -96,6 +96,7 @@ class Optparse
         puts opts
         exit
       end
+      $help =opts
     end
 
     opt_parser.parse!(args)
@@ -124,6 +125,8 @@ def handleAction(options)
     my_client.download(options.filepath,options.bucketname)
   when 'size'
     my_client.size(options.bucketname)
+  else
+    puts $help
   end
 end
 
