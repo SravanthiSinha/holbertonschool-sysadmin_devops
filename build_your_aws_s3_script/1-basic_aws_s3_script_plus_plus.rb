@@ -15,11 +15,12 @@ class AWSClient
   def connect(filename)
     # load credentials from disk
     creds= YAML.load(File.read(filename))
-    @@s3 = Aws::S3::Resource.new(
-      access_key_id: creds['access_key_id'],
-      secret_access_key: creds['secret_access_key'],
-      region: creds['region']
-    )    
+    Aws.config.update({
+                        region: creds['region'],
+                        credentials: Aws::Credentials.new(creds['access_key_id'], creds['secret_access_key'])})
+    @@s3 = Aws::S3::Resource.new
+    @@s3client = Aws::S3::Client.new
+                      
   end
   
   def list(bucketname=nil)
@@ -28,11 +29,9 @@ class AWSClient
         puts "#{object.key} => #{object.etag}"
       end
     else
-      s3 = Aws::S3::Client.new
-      resp = s3.list_buckets
-      resp.buckets.map(&:name)
-    end
-    
+      resp = @@s3client.list_buckets
+      puts resp.buckets.map(&:name)
+     end
   end
   
   def upload(filepath,bucketname)
@@ -45,6 +44,15 @@ class AWSClient
 
   def download(filepath,bucketname)
     @@s3.bucket(bucketname).object(File.basename(filepath)).get(response_target: filepath)
+  end
+  
+  def size(bucketname)
+    sum =0
+    @@s3.bucket(bucketname).objects.each do |obj|
+      sum += obj.size
+    end
+    mo = (sum/1048576.0).round(2)
+    puts "#{mo}Mo"
   end
    
 end
@@ -59,10 +67,10 @@ class Optparse
   def parse(args)
     options = OpenStruct.new
 
-    options.action = ''
+    options.action = nil
     options.verbose = false
-    options.bucketname =''
-    options.filepath = ''
+    options.bucketname = nil
+    options.filepath = nil
     
     opt_parser = OptionParser.new do |opts|
       opts.banner = "Usage: s3_script.rb [options]"
@@ -80,11 +88,11 @@ class Optparse
         options.filepath = v
       end
       
-      opts.on("-a", "--action=ACTION", "Select action to perform [list, upload, delete, download]") do |v|
+      opts.on("-a", "--action=ACTION", "Select action to perform [list, upload, delete, download,size]") do |v|
         options.action = v
       end
 
-      if ARGV[1] == nil || ARGV[1] == '-h' || ARGV[1] == '--help'
+      if ARGV[1] == '-h' || ARGV[1] == '--help'
         puts opts
         exit
       end
@@ -114,6 +122,8 @@ def handleAction(options)
     my_client.delete(options.filepath,options.bucketname)
   when 'download'
     my_client.download(options.filepath,options.bucketname)
+  when 'size'
+    my_client.size(options.bucketname)
   end
 end
 

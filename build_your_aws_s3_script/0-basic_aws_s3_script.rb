@@ -22,17 +22,10 @@ class AWSClient
     )    
   end
   
-  def list(bucketname=nil)
-    if bucketname
-      @@s3.bucket(bucketname).objects.each do |object|
-        puts "#{object.key} => #{object.etag}"
-      end
-    else
-      s3 = Aws::S3::Client.new
-      resp = s3.list_buckets
-      resp.buckets.map(&:name)
+  def list(bucketname)
+    @@s3.bucket(bucketname).objects.each do |object|
+      puts "#{object.key} => #{object.etag}"
     end
-    
   end
   
   def upload(filepath,bucketname)
