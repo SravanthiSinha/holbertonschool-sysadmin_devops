@@ -118,7 +118,7 @@ class Optparse
       end
       
       opts.on("-n", "--name=INSTANCE_NAME", "Change the name of the instance") do |v|
-        options.instance_id = v
+        options.name = v
       end
 
       
