@@ -1,0 +1,2 @@
+#!/bin/bash
+grep -o "\b[a-zA-z]\w" /etc/ssh/sshd_config
