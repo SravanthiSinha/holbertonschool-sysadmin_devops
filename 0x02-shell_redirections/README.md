@@ -292,7 +292,7 @@ sinha@tmp$:./100-empty_casks
 1
 sinha@tmp$:
 ```
-###24 A gif is worth ten thousand words 
+### 24 A gif is worth ten thousand words 
 Displays list of all the files with a .gif extension in the current directory and all its sub-directories.
 
 ```
