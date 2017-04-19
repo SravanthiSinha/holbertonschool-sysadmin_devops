@@ -159,3 +159,69 @@ sinha@0x03-shell_variables_expansions$:./14-decimal_to_hexadecimal |cat -e
 f$
 sinha@0x03-shell_variables_expansions$:
 ```
+
+### 17. Everyone is a proponent of strong encryption
+Encodes and decode the text using the rot13 encryption.
+
+```
+sinha@0x03-shell_variables_expansions$:cat quote
+"Everyone is a proponent of strong encryption."
+- Dorothy E. Denning
+sinha@0x03-shell_variables_expansions$:./100-rot13 < quote
+"Rirelbar vf n cebcbarag bs fgebat rapelcgvba."
+- Qbebgul R. Qraavat
+sinha@0x03-shell_variables_expansions$:
+```
+
+### 18. The eggs of the brood need to be an odd number
+Dispalys every other line from the input, starting with the first line.
+
+```
+sinha@0x03-shell_variables_expansions$:\ls -1
+0-alias
+100-rot13
+101-odd
+102-water_and_stir
+10-love_exponent_breath
+11-binary_to_decimal
+12-combinations
+13-print_float
+14-decimal_to_hexadecimal
+1-hello_you
+2-path
+3-paths
+4-global_variables
+5-local_variables
+6-create_local_variable
+7-create_global_variable
+8-true_knowledge
+9-divide_and_rule
+quote
+README.md
+sinha@0x03-shell_variables_expansions$:\ls -1 | ./101-odd
+0-alias
+101-odd
+10-love_exponent_breath
+12-combinations
+14-decimal_to_hexadecimal
+2-path
+4-global_variables
+6-create_local_variable
+8-true_knowledge
+quote
+sinha@0x03-shell_variables_expansions$:
+```
+### 19. I'm an instant star. Just add water and stir.
+
+ Add two numbers stored in the environment variables WATER and STIR and display the result
+ WATER is in base water
+ STIR is in base stir.
+ The result should be in base behlnort
+
+```
+sinha@0x03-shell_variables_expansions$:export WATER="ewwatratewa"
+sinha@0x03-shell_variables_expansions$:export STIR="ti.itirtrtr"
+sinha@0x03-shell_variables_expansions$:./102-water_and_stir
+holberton
+sinha@0x03-shell_variables_expansions$:
+```
