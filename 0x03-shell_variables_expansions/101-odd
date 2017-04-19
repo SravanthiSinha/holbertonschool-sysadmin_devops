@@ -1,2 +1,2 @@
 #!/bin/bash
-sed -n 1~2p
+grep -n '^' | grep -e '[13579]:' | rev | cut -d ':' -f 1 | rev
