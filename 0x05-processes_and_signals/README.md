@@ -28,6 +28,9 @@ File: 4-to_infinity_and_beyond
 5. Kill me now - A Bash script that kills 4-to_infinity_and_beyond process.
 File: 5-kill_me_now
 
+6. Kill me now made easy - A Bash script that kills 4-to_infinity_and_beyond process.
+File: 6-kill_me_now_made_easy
+
 # Useful Links:
 
 http://www.linfo.org/pid.html
