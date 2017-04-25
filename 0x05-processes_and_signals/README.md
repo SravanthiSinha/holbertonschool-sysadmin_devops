@@ -19,6 +19,9 @@ File: 1-list_your_processes
 2. Show your Bash PID - A Bash script that displays line containing the bash word, this allowing you to easily get the PID of your Bash process
 File : 2-show_your_bash_pid
 
+3. Show your Bash PID made easy -  A Bash script that displays the PID, along with the process name, of processes which name contains the word bash with out using ps
+File: 3-show_your_bash_pid_made_easy
+
 
 # Useful Links:
 
