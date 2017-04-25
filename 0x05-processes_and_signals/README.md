@@ -22,8 +22,12 @@ File : 2-show_your_bash_pid
 3. Show your Bash PID made easy -  A Bash script that displays the PID, along with the process name, of processes which name contains the word bash with out using ps
 File: 3-show_your_bash_pid_made_easy
 
-4.To infinity and beyond - A Bash script that displays To infinity and beyond indefinitely.
+4. To infinity and beyond - A Bash script that displays To infinity and beyond indefinitely.
 File: 4-to_infinity_and_beyond
+
+5. Kill me now - A Bash script that kills 4-to_infinity_and_beyond process.
+File: 5-kill_me_now
+
 # Useful Links:
 
 http://www.linfo.org/pid.html
