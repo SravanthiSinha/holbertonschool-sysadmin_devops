@@ -37,6 +37,10 @@ File: 6-kill_me_now_made_easy
   * With a sleep 2 in between each iteration
   * I am invincible!!! when receiving a SIGTERM signal
 
+8. Beheaded process - A Bash script that kills the process 7-highlander.
+
+File: 8-beheaded_process
+
 # Useful Links:
 
 http://www.linfo.org/pid.html
