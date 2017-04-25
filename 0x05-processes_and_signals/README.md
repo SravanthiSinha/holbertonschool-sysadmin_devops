@@ -31,6 +31,12 @@ File: 5-kill_me_now
 6. Kill me now made easy - A Bash script that kills 4-to_infinity_and_beyond process.
 File: 6-kill_me_now_made_easy
 
+7. Highlander -A Bash script that displays:
+
+  * To infinity and beyond indefinitely
+  * With a sleep 2 in between each iteration
+  * I am invincible!!! when receiving a SIGTERM signal
+
 # Useful Links:
 
 http://www.linfo.org/pid.html
