@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#A Bash script that displays To infinity and beyond indefinitely, I hate the kill command when receiving a SIGTERM signal, Y U no love me?! when receiving a SIGINT signalDeletes the file /var/run/holbertonscript.pid and terminate itself when receiving a SIGQUIT or SIGTERM signal
+sudo sh -c "echo '$$' > '/var/run/holbertonscript.$$'"
+function clean_up {
+    sudo rm -f /var/run/holbertonscript.$$
+    exit
+}
+trap 'echo "Y U no love me?!"' SIGINT
+trap 'echo "I hate the kill command" ; clean_up' SIGTERM
+trap clean_up SIGQUIT
+while true; do
+    echo "To infinity and beyond"
+    sleep 1
+done
+
+
+    
