@@ -3,7 +3,7 @@
 
 #Tasks
 
-Task 1: A bash Script to transfer a file from our client to a server
+TASK 1: A bash Script to transfer a file from our client to a server
 
 Requirements:  
 
@@ -13,6 +13,7 @@ Requirements:
   *The username scp connects with
   *The path to the SSH private key that scp uses
 
+TASK 2: 1. Install nginx web server
 
 # Usefull concepts:
 
