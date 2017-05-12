@@ -10,6 +10,7 @@ server {
 	}
 
 	location /redirect_me {
+		add_header X-Served-By \$hostname;
 		return 301 https://www.google.com;
 	}
 
@@ -18,6 +19,7 @@ server {
 	location /404-custom.html {
 		root /usr/share/nginx/html;
 		internal;
+		add_header X-Served-By \$hostname;
 	}
 }
 "
